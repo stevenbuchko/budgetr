@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 function HomeScreen() {
@@ -43,6 +43,23 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = 'account-balance';
+            } else if (route.name === 'Expenses') {
+              iconName = 'show-chart';
+            } else if (route.name === 'Wallet') {
+              iconName = 'account-balance-wallet';
+            } else if (route.name === 'Profile') {
+              iconName = 'person';
+            }
+
+            return <MaterialIcons name={iconName} size={size} color={color} />;
+          },
+        })}
         tabBarOptions={{
           activeTintColor: '#0047CC',
           inactiveTintColor: '#77869E',
