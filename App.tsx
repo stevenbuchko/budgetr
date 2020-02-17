@@ -1,17 +1,11 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+import * as Font from 'expo-font';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>This is the home screen</Text>
-    </View>
-  )
-}
+import HomeScreen from './src/screens/Home/HomeScreen';
 
 function ExpensesScreen() {
   return (
@@ -39,8 +33,17 @@ function ProfileScreen() {
 
 const Tab = createBottomTabNavigator();
 
-export default function App() {
-  return (
+export default class App extends React.Component {
+  componentDidMount() {
+    Font.loadAsync({
+      'avenir-next-medium': require('./assets/fonts/AvenirNext-Medium.ttf'),
+      'avenir-next-regular': require('./assets/fonts/AvenirNext-Regular.ttf'),
+      'avenir-next-light': require('./assets/fonts/AvenirNext-UltraLight.ttf'),
+    });
+  }
+  
+  render() {
+    return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -72,7 +75,7 @@ export default function App() {
       </Tab.Navigator>
     </NavigationContainer>
   );
-}
+}}
 
 const styles = StyleSheet.create({
   container: {
