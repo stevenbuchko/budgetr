@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './src/screens/Home/HomeScreen';
+import { AppLoading } from 'expo';
 
 function ExpensesScreen() {
   return (
@@ -34,8 +35,12 @@ function ProfileScreen() {
 const Tab = createBottomTabNavigator();
 
 export default class App extends React.Component {
-  componentDidMount() {
-    Font.loadAsync({
+  state = {
+    fontLoaded: false,
+  };
+
+  async _cacheResourcesAsync() {
+    await Font.loadAsync({
       'avenir-next-medium': require('./assets/fonts/AvenirNext-Medium.ttf'),
       'avenir-next-regular': require('./assets/fonts/AvenirNext-Regular.ttf'),
       'avenir-next-light': require('./assets/fonts/AvenirNext-UltraLight.ttf'),
@@ -43,6 +48,16 @@ export default class App extends React.Component {
   }
   
   render() {
+    if (!this.state.fontLoaded) {
+      return (
+        <AppLoading
+          startAsync={this._cacheResourcesAsync}
+          onFinish={() => this.setState({ fontLoaded: true })}
+          onError={console.warn}
+        />
+      );
+    }
+
     return (
     <NavigationContainer>
       <Tab.Navigator
