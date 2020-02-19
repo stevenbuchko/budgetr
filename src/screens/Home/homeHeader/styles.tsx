@@ -13,8 +13,8 @@ const styles: any = StyleSheet.create({
         fontFamily: 'avenir-next-medium'
     },
     headerContainer: {
-        marginLeft: 25,
-        marginRight: 25,
+        width: '90%',
+        alignSelf: 'center'
     }
 });
 
