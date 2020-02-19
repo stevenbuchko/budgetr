@@ -1,6 +1,7 @@
 import { Text, Container, Header, Body, Card, Left, Right } from 'native-base';
 import * as React from 'react';
 import { Image, TouchableOpacity, View, ImageBackground } from 'react-native';
+import BudgetChart from './budgetChart/BudgetChart'
 import styles from './styles';
 
 export interface Props { }
@@ -22,6 +23,7 @@ class HomeCard extends React.Component<Props, State> {
                         </TouchableOpacity>
                     </Right>
                 </View>
+                <BudgetChart />
             </Card>
         );
     }
