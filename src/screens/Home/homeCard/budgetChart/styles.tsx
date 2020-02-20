@@ -3,40 +3,47 @@ import { StyleSheet, Dimensions } from 'react-native';
 const styles: any = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f5fcff"
+        alignSelf: "center",
+        marginTop: 20
     },
-    cardContainer: {
-        width: '90%',
-        height: Dimensions.get('window').width * .9,
+    innerCircle: {
         marginTop: -200,
-        borderRadius: 12
+        alignItems: 'center'
     },
-    headerWrapper: {
-        flexDirection: 'row',
-        alignSelf: 'center',
-        marginTop: 15,
-        width: '90%',
-    },
-    leftSide: {
-        flexDirection: 'row',
-    },
-    forText: {
+    topText: {
         fontSize: 13,
+        fontFamily: 'avenir-next-medium',
+        color: '#77869E'
+    },
+    spendText: {
+        fontSize: 30,
+        fontFamily: 'avenir-next-medium',
+        color: '#042C5C'
+    },
+    lowerTextWrapper: {
+        flexDirection: 'row'
+    },
+    lowerText: {
+        fontSize: 13,
+        fontFamily: 'avenir-next-regular',
+        color: '#77869E'
+    },
+    budgetText: {
+        fontSize: 13,
+        fontFamily: 'avenir-next-medium',
+        color: '#77869E'
+    },
+    underCircle: {
+        flexDirection: 'row',
+        marginTop: 50,
+        justifyContent: 'space-between',
+    },
+    percentageText: {
+        fontSize: 11,
+        fontFamily: 'avenir-next-regular',
         color: '#77869E',
-        fontFamily: 'avenir-next-regular'
-    },
-    monthText: {
-        fontSize: 13,
-        color: '#042C5C',
-        fontFamily: 'avenir-next-medium'
-    },
-    editBtnText: {
-        fontSize: 13,
-        color: '#0047CC',
-        fontFamily: 'avenir-next-medium'
-    },
+        textAlign: 'center'
+    }
 });
 
 export default styles;

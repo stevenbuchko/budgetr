@@ -1,14 +1,28 @@
-import { Text, Container, Header, Body, Card, Left, Right } from 'native-base';
+import { Text, Container, Header, Body, Card, Left, Right, Toast } from 'native-base';
 import * as React from 'react';
-import { Image, TouchableOpacity, View, ImageBackground } from 'react-native';
+import { Image, TouchableOpacity, View, ImageBackground, StyleSheet } from 'react-native';
 import BudgetChart from './budgetChart/BudgetChart'
 import styles from './styles';
 
-export interface Props { }
+export interface Props { 
+    budget: number;
+    updateBudget: any;
+    spent: number;
+}
 
-export interface State { }
+export interface State { 
+    modalVisible: boolean;
+}
 
 class HomeCard extends React.Component<Props, State> {
+    state = {
+        modalVisible: false,
+    };
+
+    setModalVisible(visible: boolean) {
+        this.setState({ modalVisible: visible });
+    }
+
     render() {
         return (
             <Card style={styles.cardContainer}>
@@ -18,12 +32,15 @@ class HomeCard extends React.Component<Props, State> {
                         <Text style={styles.monthText}>Feburary</Text>
                     </View>
                     <Right style={styles.rightSide}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.updateBudget(890)}>
                             <Text style={styles.editBtnText}>Edit Budget</Text>
                         </TouchableOpacity>
                     </Right>
                 </View>
-                <BudgetChart />
+                <BudgetChart 
+                    budget={this.props.budget}
+                    spent={this.props.spent}
+                />
             </Card>
         );
     }
