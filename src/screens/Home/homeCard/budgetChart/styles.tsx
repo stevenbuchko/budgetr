@@ -37,12 +37,14 @@ const styles: any = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 50,
         justifyContent: 'space-between',
+        paddingRight: 15,
+        paddingLeft: 20
     },
     percentageText: {
         fontSize: 11,
         fontFamily: 'avenir-next-regular',
         color: '#77869E',
-        textAlign: 'center'
+        textAlign: 'center',
     }
 });
 
