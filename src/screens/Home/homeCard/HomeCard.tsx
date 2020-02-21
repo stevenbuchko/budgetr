@@ -5,24 +5,18 @@ import BudgetChart from './budgetChart/BudgetChart'
 import styles from './styles';
 
 export interface Props { 
-    budget: number;
+    budget_amount: number;
+    budget_amount_value: number;
+    total_expenses: number;
+    total_expenses_value: number
     updateBudget: any;
-    spent: number;
 }
 
 export interface State { 
-    modalVisible: boolean;
+    
 }
 
 class HomeCard extends React.Component<Props, State> {
-    state = {
-        modalVisible: false,
-    };
-
-    setModalVisible(visible: boolean) {
-        this.setState({ modalVisible: visible });
-    }
-
     render() {
         return (
             <Card style={styles.cardContainer}>
@@ -38,8 +32,10 @@ class HomeCard extends React.Component<Props, State> {
                     </Right>
                 </View>
                 <BudgetChart 
-                    budget={this.props.budget}
-                    spent={this.props.spent}
+                    budget_amount={this.props.budget_amount}
+                    budget_amount_value={this.props.budget_amount_value}
+                    total_expenses={this.props.total_expenses}
+                    total_expenses_value={this.props.total_expenses_value}
                 />
             </Card>
         );

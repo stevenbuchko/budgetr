@@ -6,17 +6,20 @@ import { View } from 'native-base';
 import { Text } from 'react-native';
 
 export interface Props { 
-    budget: number
-    spent: number
+    budget_amount: number,
+    budget_amount_value: number,
+    total_expenses: number,
+    total_expenses_value: number
 }
 
 export interface State { }
 
 class BudgetChart extends React.Component<Props, State> {
     render() {
-        const { budget, spent } = this.props;
+        const { budget_amount, budget_amount_value, total_expenses, total_expenses_value  } = this.props;
 
-        let percentage = ( spent / budget ) * 100;
+        const percentage = ( total_expenses_value / budget_amount_value ) * 100;
+        console.log(percentage);
 
         return (
             <View style={styles.container}>
@@ -33,10 +36,10 @@ class BudgetChart extends React.Component<Props, State> {
                 />
                 <View style={styles.innerCircle}>
                     <Text style={styles.topText}>You've Spent</Text>
-                    <Text style={styles.spendText}>${spent}</Text>
+                    <Text style={styles.spendText}>{total_expenses}</Text>
                     <View style={styles.lowerTextWrapper}>
                         <Text style={styles.lowerText}>out of </Text>
-                        <Text style={styles.budgetText}>${budget}</Text>
+                        <Text style={styles.budgetText}>{budget_amount}</Text>
                     </View>
                 </View>
                 <View style={styles.underCircle}>
