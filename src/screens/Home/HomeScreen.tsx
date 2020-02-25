@@ -5,7 +5,9 @@ import styles from "./styles";
 import HomeHeader from "./homeHeader/HomeHeader";
 import HomeCard from "./homeCard/HomeCard";
 
-export interface Props { }
+export interface Props {
+    navigation: any;
+ }
 
 export interface State {
     budget_amount: number;
@@ -65,6 +67,7 @@ class HomeScreen extends React.Component<Props, State> {
                     total_expenses_value={this.state.total_expenses_value}
                     budget_percentage={this.state.budget_percentage}
                     updateBudget={this.updateBudget}
+                    navigation={this.props.navigation}
                 />
             </Container>
         );

@@ -5,7 +5,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/Home/HomeScreen';
+import EditBudgetScreen from './src/screens/EditBudget/EditBudgetScreen';
 import { AppLoading } from 'expo';
 
 function ExpensesScreen() {
@@ -33,6 +35,17 @@ function ProfileScreen() {
 }
 
 const Tab = createBottomTabNavigator();
+
+const HomeStack = createStackNavigator();
+
+function HomeScreenStack() {
+  return (
+    <HomeStack.Navigator headerMode='none'>
+      <HomeStack.Screen name="HomeDashboard" component={HomeScreen} />
+      <HomeStack.Screen name="EditBudget" component={EditBudgetScreen} />
+    </HomeStack.Navigator>
+  )
+}
 
 export default class App extends React.Component {
   state = {
@@ -83,7 +96,7 @@ export default class App extends React.Component {
           inactiveTintColor: '#77869E',
         }}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" component={HomeScreenStack} />
         <Tab.Screen name="Expenses" component={ExpensesScreen} />
         <Tab.Screen name="Wallet" component={WalletScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />

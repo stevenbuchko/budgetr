@@ -11,6 +11,7 @@ export interface Props {
     total_expenses_value: number;
     budget_percentage: number;
     updateBudget: any;
+    navigation: any;
 }
 
 export interface State { 
@@ -27,7 +28,7 @@ class HomeCard extends React.Component<Props, State> {
                         <Text style={styles.monthText}>Feburary</Text>
                     </View>
                     <Right style={styles.rightSide}>
-                        <TouchableOpacity onPress={() => this.props.updateBudget(890)}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('EditBudget')}>
                             <Text style={styles.editBtnText}>Edit Budget</Text>
                         </TouchableOpacity>
                     </Right>
