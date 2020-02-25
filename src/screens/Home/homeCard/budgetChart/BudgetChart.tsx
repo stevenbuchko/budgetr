@@ -9,14 +9,15 @@ export interface Props {
     budget_amount: number,
     budget_amount_value: number,
     total_expenses: number,
-    total_expenses_value: number
+    total_expenses_value: number,
+    budget_percentage: number
 }
 
 export interface State { }
 
 class BudgetChart extends React.Component<Props, State> {
     render() {
-        const { budget_amount, budget_amount_value, total_expenses, total_expenses_value  } = this.props;
+        const { budget_amount, budget_amount_value, total_expenses, total_expenses_value, budget_percentage } = this.props;
 
         const percentage = ( total_expenses_value / budget_amount_value ) * 100;
         console.log(percentage);
@@ -26,7 +27,7 @@ class BudgetChart extends React.Component<Props, State> {
                 <AnimatedCircularProgress
                     size={270}
                     width={15}
-                    fill={percentage}
+                    fill={budget_percentage}
                     tintColor="#0047CC"
                     onAnimationComplete={() => console.log('onAnimationComplete')}
                     backgroundColor="#DFE7F5"

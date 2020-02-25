@@ -8,7 +8,8 @@ export interface Props {
     budget_amount: number;
     budget_amount_value: number;
     total_expenses: number;
-    total_expenses_value: number
+    total_expenses_value: number;
+    budget_percentage: number;
     updateBudget: any;
 }
 
@@ -36,6 +37,7 @@ class HomeCard extends React.Component<Props, State> {
                     budget_amount_value={this.props.budget_amount_value}
                     total_expenses={this.props.total_expenses}
                     total_expenses_value={this.props.total_expenses_value}
+                    budget_percentage={this.props.budget_percentage}
                 />
             </Card>
         );
