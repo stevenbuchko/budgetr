@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { Text, Container, Header, Body } from 'native-base';
+import { Text, Container, Header, Body, Form, Item, Label, Input } from 'native-base';
 import * as React from 'react';
 import { Image, TouchableOpacity, View, ImageBackground } from 'react-native';
 import styles from './styles';
@@ -23,6 +23,14 @@ class HomeHeader extends React.Component<Props, State> {
                         />
                     </TouchableOpacity>
                     <Text style={styles.headerTitle}>Edit Budget</Text>
+                </View>
+                <View style={styles.bodyContainer}>
+                    <Form>
+                        <Item floatingLabel>
+                            <Label>Username</Label>
+                            <Input />
+                        </Item>
+                    </Form>
                 </View>
             </Container>
         );

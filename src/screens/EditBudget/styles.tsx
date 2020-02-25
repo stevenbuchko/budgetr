@@ -4,6 +4,11 @@ const styles: any = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
+        alignItems: 'center',
+    },
+    bodyContainer: {
+        width: '90%',
+        alignSelf: 'center',
     },
     headerTitle: {
         color: '#042C5C',
