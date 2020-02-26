@@ -1,4 +1,5 @@
 import { Text, Container, Form, Item, Label, Input } from 'native-base';
+import { TextInputMask } from 'react-native-masked-text';
 import axios from "axios";
 import * as React from 'react';
 import { Button, Image, TouchableOpacity, View } from 'react-native';
@@ -16,6 +17,8 @@ export interface State {
 
 
 class EditBudgetScreen extends React.Component<Props, State> {
+    budgetField: TextInputMask;
+
     constructor(props) {
         super(props);
 
@@ -26,12 +29,12 @@ class EditBudgetScreen extends React.Component<Props, State> {
         console.log(budget_amount);
 
         this.state = {
-            input_amount: budget_amount.toString(),
+            input_amount: budget_amount,
         };
     }
 
     updateBudget() {
-        const new_budget = Number(this.state.input_amount);
+        const new_budget = Number(this.budgetField.getRawValue());
         console.log(new_budget);
 
         const params = {
@@ -71,13 +74,21 @@ class EditBudgetScreen extends React.Component<Props, State> {
                 </View>
                 <View style={styles.bodyContainer}>
                     <Form>
-                        <Item floatingLabel>
-                            <Label>Budget</Label>
-                            <Input
-                                value={this.state.input_amount}
-                                onChangeText={(i) => this.setState({ input_amount: i })}
-                            />
-                        </Item>
+                        <Label>Budget</Label>
+                        <TextInputMask
+                            type={'money'}
+                            options={{
+                                precision: 2,
+                                separator: '.',
+                                delimiter: ',',
+                                unit: '$',
+                                suffixUnit: ''
+                            }}
+                            keyboardType="numeric"
+                            value={this.state.input_amount}
+                            onChangeText={(i) => this.setState({ input_amount: i })}
+                            ref={(ref) => this.budgetField = ref}
+                        /> 
                     </Form>
                     <Button 
                         title="Update Budget"
