@@ -1,16 +1,34 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import { Text, Container, Header, Body, Form, Item, Label, Input } from 'native-base';
 import * as React from 'react';
-import { Image, TouchableOpacity, View, ImageBackground } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
 export interface Props { 
     navigation: any;
+    route: any;
 }
 
-export interface State { }
+export interface State {
+    input_amount: string;
+ }
 
-class HomeHeader extends React.Component<Props, State> {
+
+
+class EditBudgetScreen extends React.Component<Props, State> {
+    constructor(props) {
+        super(props);
+
+        console.log(this.props.route.params);
+
+        const budget_amount = this.props.route.params.budget_amount;
+
+        console.log(budget_amount);
+
+        this.state = {
+            input_amount: budget_amount.toString(),
+        };
+    }
+
     render() {
         return (
             <Container style={styles.container}>
@@ -27,8 +45,11 @@ class HomeHeader extends React.Component<Props, State> {
                 <View style={styles.bodyContainer}>
                     <Form>
                         <Item floatingLabel>
-                            <Label>Username</Label>
-                            <Input />
+                            <Label>Budget</Label>
+                            <Input
+                                value={this.state.input_amount}
+                                onChangeText={(i) => this.setState({ input_amount: i })}
+                            />
                         </Item>
                     </Form>
                 </View>
@@ -37,4 +58,4 @@ class HomeHeader extends React.Component<Props, State> {
     }
 }
 
-export default HomeHeader;
+export default EditBudgetScreen;

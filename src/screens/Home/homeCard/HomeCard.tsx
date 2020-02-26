@@ -28,7 +28,11 @@ class HomeCard extends React.Component<Props, State> {
                         <Text style={styles.monthText}>Feburary</Text>
                     </View>
                     <Right style={styles.rightSide}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('EditBudget')}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('EditBudget', 
+                            {
+                                budget_amount: this.props.budget_amount
+                            }
+                        )}>
                             <Text style={styles.editBtnText}>Edit Budget</Text>
                         </TouchableOpacity>
                     </Right>
