@@ -94,6 +94,7 @@ export default class App extends React.Component {
         tabBarOptions={{
           activeTintColor: '#0047CC',
           inactiveTintColor: '#77869E',
+          keyboardHidesTabBar: 'true'
         }}
       >
         <Tab.Screen name="Home" component={HomeScreenStack} />
