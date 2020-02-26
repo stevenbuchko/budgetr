@@ -39,10 +39,6 @@ class HomeScreen extends React.Component<Props, State> {
                 console.log('Fetch Error:', error)
             }
     }
-
-    updateBudget = (newBudget: number) => {
-        this.setState({ budget_amount: newBudget });
-    }
     
     render() {
         return (
@@ -51,7 +47,6 @@ class HomeScreen extends React.Component<Props, State> {
                 <HomeCard 
                     budget_amount={this.state.budget_amount}
                     total_expenses={this.state.total_expenses} 
-                    updateBudget={this.updateBudget}
                     navigation={this.props.navigation}
                 />
             </Container>

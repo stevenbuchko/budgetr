@@ -7,7 +7,6 @@ import styles from './styles';
 export interface Props { 
     budget_amount: number;
     total_expenses: number;
-    updateBudget: any;
     navigation: any;
 }
 
