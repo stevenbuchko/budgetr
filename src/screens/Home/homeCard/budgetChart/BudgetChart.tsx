@@ -7,19 +7,16 @@ import { Text } from 'react-native';
 
 export interface Props { 
     budget_amount: number,
-    budget_amount_value: number,
     total_expenses: number,
-    total_expenses_value: number,
-    budget_percentage: number
 }
 
 export interface State { }
 
 class BudgetChart extends React.Component<Props, State> {
     render() {
-        const { budget_amount, budget_amount_value, total_expenses, total_expenses_value, budget_percentage } = this.props;
+        const { budget_amount, total_expenses } = this.props;
 
-        const percentage = ( total_expenses_value / budget_amount_value ) * 100;
+        const percentage = ( total_expenses / budget_amount ) * 100;
         console.log(percentage);
 
         return (
@@ -27,7 +24,7 @@ class BudgetChart extends React.Component<Props, State> {
                 <AnimatedCircularProgress
                     size={270}
                     width={15}
-                    fill={budget_percentage}
+                    fill={percentage}
                     tintColor="#0047CC"
                     onAnimationComplete={() => console.log('onAnimationComplete')}
                     backgroundColor="#DFE7F5"
@@ -37,10 +34,10 @@ class BudgetChart extends React.Component<Props, State> {
                 />
                 <View style={styles.innerCircle}>
                     <Text style={styles.topText}>You've Spent</Text>
-                    <Text style={styles.spendText}>{total_expenses}</Text>
+                    <Text style={styles.spendText}>${total_expenses}</Text>
                     <View style={styles.lowerTextWrapper}>
                         <Text style={styles.lowerText}>out of </Text>
-                        <Text style={styles.budgetText}>{budget_amount}</Text>
+                        <Text style={styles.budgetText}>${budget_amount}</Text>
                     </View>
                 </View>
                 <View style={styles.underCircle}>

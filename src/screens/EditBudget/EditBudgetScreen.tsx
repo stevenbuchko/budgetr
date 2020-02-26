@@ -1,6 +1,7 @@
-import { Text, Container, Header, Body, Form, Item, Label, Input } from 'native-base';
+import { Text, Container, Form, Item, Label, Input } from 'native-base';
+import axios from "axios";
 import * as React from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Button, Image, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
 export interface Props { 
@@ -29,6 +30,32 @@ class EditBudgetScreen extends React.Component<Props, State> {
         };
     }
 
+    updateBudget() {
+        const new_budget = Number(this.state.input_amount);
+        console.log(new_budget);
+
+        const params = {
+            'budget_amount': new_budget,
+        };
+        
+        try {
+            axios.put('http://192.168.1.2:3000/api/v1/users/dc5bf63a-38d1-474e-b944-9a18e206a81e', params,
+                {
+                    headers: {
+                        'content-type': 'application/json',
+                    }
+                }
+            )
+            .then(res => {
+                console.log(res.data);
+                this.props.navigation.pop();
+            })
+            .catch(err => console.log(err));
+        } catch (error) {
+            console.log('Fetch Error:', error)
+        }
+    }
+
     render() {
         return (
             <Container style={styles.container}>
@@ -52,6 +79,10 @@ class EditBudgetScreen extends React.Component<Props, State> {
                             />
                         </Item>
                     </Form>
+                    <Button 
+                        title="Update Budget"
+                        onPress={() => this.updateBudget()}
+                    />
                 </View>
             </Container>
         );

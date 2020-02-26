@@ -24,6 +24,10 @@ const styles: any = StyleSheet.create({
     },
     backBtn: {
         height: 15
+    },
+    buttonStyle: {
+        color: '#FFFFFF',
+        fontFamily: 'avenir-next-medium'
     }
 });
 
