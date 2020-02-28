@@ -1,0 +1,21 @@
+import React from "react";
+import { Text, View } from 'react-native';
+import styles from "./styles";
+
+export interface Props { }
+
+export interface State { }
+
+class WalletScreen extends React.Component<Props, State> {
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text>This is the wallet screen</Text>
+            </View>
+
+
+        )
+    }
+}
+
+export default WalletScreen;

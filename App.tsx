@@ -8,20 +8,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/Home/HomeScreen';
 import EditBudgetScreen from './src/screens/EditBudget/EditBudgetScreen';
+import WalletScreen from './src/screens/Wallet/WalletScreen';
 import { AppLoading } from 'expo';
 
 function ExpensesScreen() {
   return (
     <View style={styles.container}>
       <Text>This is the expenses screen</Text>
-    </View>
-  )
-}
-
-function WalletScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>This is the wallet screen</Text>
     </View>
   )
 }
