@@ -1,4 +1,4 @@
-import { Text, Container, Form, Item, Label, Input } from 'native-base';
+import { Text, Container, Form, Label } from 'native-base';
 import { TextInputMask } from 'react-native-masked-text';
 import axios from "axios";
 import * as React from 'react';
@@ -74,7 +74,7 @@ class EditBudgetScreen extends React.Component<Props, State> {
                 </View>
                 <View style={styles.bodyContainer}>
                     <Form>
-                        <Label>Budget</Label>
+                        <Label>Monthly Budget</Label>
                         <TextInputMask
                             type={'money'}
                             options={{
@@ -85,15 +85,20 @@ class EditBudgetScreen extends React.Component<Props, State> {
                                 suffixUnit: ''
                             }}
                             keyboardType="numeric"
+                            autoFocus
                             value={this.state.input_amount}
                             onChangeText={(i) => this.setState({ input_amount: i })}
                             ref={(ref) => this.budgetField = ref}
+                            style={styles.input}
                         /> 
                     </Form>
-                    <Button 
-                        title="Update Budget"
-                        onPress={() => this.updateBudget()}
-                    />
+                    <View style={styles.buttonWrapper}>
+                        <Button 
+                            title="Update Budget"
+                            color="#0047CC"
+                            onPress={() => this.updateBudget()}
+                        />
+                    </View>
                 </View>
             </Container>
         );

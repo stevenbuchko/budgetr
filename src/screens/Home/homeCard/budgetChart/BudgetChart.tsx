@@ -19,12 +19,14 @@ class BudgetChart extends React.Component<Props, State> {
         const budget_amount_formatted = (budget_amount).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
         const total_expenses_formatted = (total_expenses).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
+        const percentage = (total_expenses / budget_amount) * 100;
+
         return (
             <View style={styles.container}>
                 <AnimatedCircularProgress
                     size={270}
                     width={15}
-                    fill={(total_expenses / budget_amount) * 100}
+                    fill={percentage}
                     tintColor="#0047CC"
                     onAnimationComplete={() => console.log('onAnimationComplete')}
                     backgroundColor="#DFE7F5"

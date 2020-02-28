@@ -9,6 +9,7 @@ const styles: any = StyleSheet.create({
     bodyContainer: {
         width: '90%',
         alignSelf: 'center',
+        marginTop: 80
     },
     headerTitle: {
         color: '#042C5C',
@@ -25,9 +26,12 @@ const styles: any = StyleSheet.create({
     backBtn: {
         height: 15
     },
-    buttonStyle: {
-        color: '#FFFFFF',
-        fontFamily: 'avenir-next-medium'
+    buttonWrapper: {
+        marginTop: 40
+    },
+    input: {
+        borderBottomColor: "#77869E",
+        borderBottomWidth: 1
     }
 });
 
