@@ -10,6 +10,7 @@ import HomeScreen from './src/screens/Home/HomeScreen';
 import EditBudgetScreen from './src/screens/EditBudget/EditBudgetScreen';
 import WalletScreen from './src/screens/Wallet/WalletScreen';
 import { AppLoading } from 'expo';
+import PlaidAuth from './src/screens/PlaidAuth/PlaidAuth';
 
 function ExpensesScreen() {
   return (
@@ -30,6 +31,7 @@ function ProfileScreen() {
 const Tab = createBottomTabNavigator();
 
 const HomeStack = createStackNavigator();
+const WalletStack = createStackNavigator();
 
 function HomeScreenStack() {
   return (
@@ -37,6 +39,15 @@ function HomeScreenStack() {
       <HomeStack.Screen name="HomeDashboard" component={HomeScreen} />
       <HomeStack.Screen name="EditBudget" component={EditBudgetScreen} />
     </HomeStack.Navigator>
+  )
+}
+
+function WalletScreenStack() {
+  return (
+    <WalletStack.Navigator headerMode='none'>
+      <WalletStack.Screen name="WalletDashboard" component={WalletScreen} />
+      <WalletStack.Screen name="PlaidAuth" component={PlaidAuth} />
+    </WalletStack.Navigator>
   )
 }
 
@@ -92,7 +103,7 @@ export default class App extends React.Component {
       >
         <Tab.Screen name="Home" component={HomeScreenStack} />
         <Tab.Screen name="Expenses" component={ExpensesScreen} />
-        <Tab.Screen name="Wallet" component={WalletScreen} />
+        <Tab.Screen name="Wallet" component={WalletScreenStack} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
     </NavigationContainer>
