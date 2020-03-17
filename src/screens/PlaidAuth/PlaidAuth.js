@@ -8,9 +8,26 @@ const PLAID_PRODUCT = 'transactions';
 export default class PlaidAuth extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            data: {},
+            status: '',
+        };
     }
 
     render() {
+        // Possible statuses: CONNECTED | EXIT | ACKNOWLEDGE | EVENT | LOGIN
+        switch (this.state.status) {
+            case 'plaid_link-undefined::connected':
+                this.props.navigation.pop();
+            case 'LOGIN':
+            case 'plaid_link-undefined::exit':
+                return;
+            default:
+                return this.renderTransactionConnection();
+        }
+    }
+
+    renderTransactionConnection() {
         return (
             <WebView
                 source={{
@@ -20,5 +37,24 @@ export default class PlaidAuth extends Component {
             />
 
         );
+    }
+
+
+    onMessage(e) {
+        if (!!!e || !!!e.nativeEvent) {
+            return;
+        }
+        const encodedEventString = e.nativeEvent.data || null;
+        const decodedEventString = decodeURIComponent(encodedEventString);
+        const finalEventString = decodeURIComponent(decodedEventString);
+
+        console.log(JSON.parse(finalEventString));
+
+        this.props.handleEvent(JSON.parse(finalEventString));
+        this.setState({
+            data: JSON.parse(finalEventString),
+            status: JSON.parse(finalEventString).action,
+        });
+        this.props.completePlaidLink(this.state.data.metadata);
     }
 }

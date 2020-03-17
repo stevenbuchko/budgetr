@@ -10,7 +10,7 @@ import HomeScreen from './src/screens/Home/HomeScreen';
 import EditBudgetScreen from './src/screens/EditBudget/EditBudgetScreen';
 import WalletScreen from './src/screens/Wallet/WalletScreen';
 import { AppLoading } from 'expo';
-import PlaidAuth from './src/screens/PlaidAuth/PlaidAuth';
+import AddWalletAccountScreen from './src/screens/AddWalletAccount/AddWalletAccountScreen';
 
 function ExpensesScreen() {
   return (
@@ -46,7 +46,7 @@ function WalletScreenStack() {
   return (
     <WalletStack.Navigator headerMode='none'>
       <WalletStack.Screen name="WalletDashboard" component={WalletScreen} />
-      <WalletStack.Screen name="PlaidAuth" component={PlaidAuth} />
+      <WalletStack.Screen name="AddWalletAccount" component={AddWalletAccountScreen} />
     </WalletStack.Navigator>
   )
 }
@@ -63,7 +63,7 @@ export default class App extends React.Component {
       'avenir-next-light': require('./assets/fonts/AvenirNext-UltraLight.ttf'),
     });
   }
-  
+
   render() {
     if (!this.state.fontLoaded) {
       return (
@@ -76,39 +76,40 @@ export default class App extends React.Component {
     }
 
     return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => {
-            let iconName;
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ color, size }) => {
+              let iconName;
 
-            if (route.name === 'Home') {
-              iconName = 'account-balance';
-            } else if (route.name === 'Expenses') {
-              iconName = 'show-chart';
-            } else if (route.name === 'Wallet') {
-              iconName = 'account-balance-wallet';
-            } else if (route.name === 'Profile') {
-              iconName = 'person';
-            }
+              if (route.name === 'Home') {
+                iconName = 'account-balance';
+              } else if (route.name === 'Expenses') {
+                iconName = 'show-chart';
+              } else if (route.name === 'Wallet') {
+                iconName = 'account-balance-wallet';
+              } else if (route.name === 'Profile') {
+                iconName = 'person';
+              }
 
-            return <MaterialIcons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: '#0047CC',
-          inactiveTintColor: '#77869E',
-          keyboardHidesTabBar: true
-        }}
-      >
-        <Tab.Screen name="Home" component={HomeScreenStack} />
-        <Tab.Screen name="Expenses" component={ExpensesScreen} />
-        <Tab.Screen name="Wallet" component={WalletScreenStack} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-}}
+              return <MaterialIcons name={iconName} size={size} color={color} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: '#0047CC',
+            inactiveTintColor: '#77869E',
+            keyboardHidesTabBar: true
+          }}
+        >
+          <Tab.Screen name="Home" component={HomeScreenStack} />
+          <Tab.Screen name="Expenses" component={ExpensesScreen} />
+          <Tab.Screen name="Wallet" component={WalletScreenStack} />
+          <Tab.Screen name="Profile" component={ProfileScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

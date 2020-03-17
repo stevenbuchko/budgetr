@@ -1,10 +1,9 @@
 import React from "react";
 import { Text, View } from 'react-native';
 import styles from "./styles";
-import { WebView } from "expo";
 import { Button } from "native-base";
 
-export interface Props { 
+export interface Props {
     navigation: any;
 }
 
@@ -19,8 +18,8 @@ class WalletScreen extends React.Component<Props, State> {
         return (
             <View style={styles.container}>
                 <Text>This is the wallet screen</Text>
-                <Button onPress = {() => this.props.navigation.navigate('PlaidAuth')}>
-                    <Text>Open Plaid</Text>
+                <Button onPress={() => this.props.navigation.navigate('AddWalletAccount')}>
+                    <Text>Add New Account</Text>
                 </Button>
             </View>
         )

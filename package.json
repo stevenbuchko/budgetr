@@ -40,5 +40,8 @@
     "@babel/core": "^7.0.0",
     "babel-preset-expo": "~8.0.0"
   },
+  "resolutions": {
+    "metro-config": "0.56.3"
+  },
   "private": true
 }
