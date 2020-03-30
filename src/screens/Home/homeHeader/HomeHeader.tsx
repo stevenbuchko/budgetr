@@ -1,7 +1,6 @@
-import { LinearGradient } from 'expo-linear-gradient';
-import { Text, Container, Header, Body } from 'native-base';
+import { Text } from 'native-base';
 import * as React from 'react';
-import { Image, TouchableOpacity, View, ImageBackground } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import styles from './styles';
 
 export interface Props { }
@@ -18,7 +17,7 @@ class HomeHeader extends React.Component<Props, State> {
             >
                 <View style={styles.headerContainer}>
                     <Text style={styles.headerTitle}>Your Budget</Text>
-                </View>     
+                </View>
             </ImageBackground>
         );
     }

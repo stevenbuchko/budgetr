@@ -61,6 +61,8 @@ export default class App extends React.Component {
       'avenir-next-medium': require('./assets/fonts/AvenirNext-Medium.ttf'),
       'avenir-next-regular': require('./assets/fonts/AvenirNext-Regular.ttf'),
       'avenir-next-light': require('./assets/fonts/AvenirNext-UltraLight.ttf'),
+      'courier-prime-regular': require('./assets/fonts/CourierPrime-Regular.ttf'),
+      'courier-prime-bold': require('./assets/fonts/CourierPrime-Bold.ttf'),
     });
   }
 

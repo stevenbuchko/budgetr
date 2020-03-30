@@ -5,7 +5,6 @@ const styles: any = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F8F9F9',
         alignItems: 'center',
-        justifyContent: 'center',
     }
 });
 
