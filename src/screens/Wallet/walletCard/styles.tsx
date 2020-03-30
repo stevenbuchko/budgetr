@@ -2,12 +2,12 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const styles: any = StyleSheet.create({
     cardBackground: {
-        width: Dimensions.get('window').width * .9,
-        height: Dimensions.get('window').width * .9 * .61,
+        width: Dimensions.get('window').width * 1.1,
+        height: Dimensions.get('window').width * 1.1 * .61,
         alignSelf: 'center'
     },
     accountWrapper: {
-        width: '80%',
+        width: '70%',
         height: '100%',
         alignSelf: 'center',
         justifyContent: 'flex-end'
@@ -15,7 +15,7 @@ const styles: any = StyleSheet.create({
     bottomRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingBottom: 20,
+        paddingBottom: 40,
         paddingTop: 15
     },
     cardNum: {

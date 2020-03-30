@@ -4,7 +4,7 @@ const styles: any = StyleSheet.create({
     headerWrapper: {
         width: '90%',
         paddingTop: 70,
-        paddingBottom: 30
+        paddingBottom: 10
     },
     headerTitle: {
         color: '#042C5C',
