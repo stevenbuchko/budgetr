@@ -103,7 +103,8 @@ class AddWalletAccountScreen extends React.Component<Props, State> {
                 <PlaidAuth
                     completePlaidLink={(metadata?: PlaidData) => this.handleOnPlaidLinkComplete(metadata)}
                     handleEvent={(event?: any) => this.handleEventTracking(event)}
-                    navigation={this.props.navigation} />
+                    navigation={this.props.navigation}
+                />
             </Container >
         )
     }

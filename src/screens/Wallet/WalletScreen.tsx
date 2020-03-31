@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, View } from 'react-native';
 import styles from "./styles";
-import { Button } from "native-base";
 import WalletCard from "./walletCard/WalletCard";
 import WalletHeader from "./walletHeader/WalletHeader";
 
@@ -19,11 +18,10 @@ class WalletScreen extends React.Component<Props, State> {
     render() {
         return (
             <View style={styles.container}>
-                <WalletHeader />
+                <WalletHeader
+                    navigation={this.props.navigation}
+                />
                 <WalletCard />
-                <Button onPress={() => this.props.navigation.navigate('AddWalletAccount')}>
-                    <Text>Add New Account</Text>
-                </Button>
             </View>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native-webview';
-import { Button, Text, View } from 'native-base';
+import { Text, View } from 'native-base';
+import { Button, Image, TouchableOpacity } from 'react-native';
 import styles from "./styles";
 
 const PLAID_PUBLIC_KEY = '54c75f7e9700d13893662d872beee7';
@@ -39,10 +40,23 @@ export default class PlaidAuth extends Component {
     renderSplash() {
         return (
             <View style={styles.container}>
-                <Text>This is the add wallet splash screen</Text>
-                <Button onPress={() => this.setState({ status: '' })}>
-                    <Text>Add New Account</Text>
-                </Button>
+                <View style={styles.headerContainer}>
+                    <TouchableOpacity onPress={() => this.props.navigation.pop()}>
+                        <Image
+                            source={require("../../../assets/back-button.png")}
+                            resizeMode="contain"
+                            style={styles.backBtn}
+                        />
+                    </TouchableOpacity>
+                    <Text style={styles.headerTitle}>Add Account</Text>
+                </View>
+                <View style={styles.buttonWrapper}>
+                    <Button
+                        title="Add New Account"
+                        color="#0047CC"
+                        onPress={() => this.setState({ status: '' })}
+                    />
+                </View>
             </View>
         )
     }
