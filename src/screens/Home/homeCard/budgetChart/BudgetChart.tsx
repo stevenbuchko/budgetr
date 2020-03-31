@@ -5,14 +5,14 @@ import styles from './styles';
 import { View } from 'native-base';
 import { Text } from 'react-native';
 
-export interface Props { 
+export interface Props {
     budget_amount: number,
     total_expenses: number,
 }
 
 export interface State { }
 
-class BudgetChart extends React.Component<Props, State> {  
+class BudgetChart extends React.Component<Props, State> {
     render() {
         const { budget_amount, total_expenses } = this.props;
 
@@ -31,6 +31,7 @@ class BudgetChart extends React.Component<Props, State> {
                     onAnimationComplete={() => console.log('onAnimationComplete')}
                     backgroundColor="#DFE7F5"
                     lineCap="round"
+                    duration={0}
                     arcSweepAngle={240}
                     rotation={-120}
                 />
@@ -47,7 +48,7 @@ class BudgetChart extends React.Component<Props, State> {
                     <Text style={styles.percentageText}>100%</Text>
                 </View>
             </View>
-            
+
         );
     }
 }
