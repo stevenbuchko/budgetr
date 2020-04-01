@@ -28,13 +28,26 @@ export default class PlaidAuth extends Component {
         // Possible statuses: CONNECTED | EXIT | ACKNOWLEDGE | EVENT | LOGIN
         switch (this.state.status) {
             case 'plaid_link-undefined::connected':
-                this.props.navigation.pop();
+                return this.renderDetails();
             case 'LOGIN':
             case 'plaid_link-undefined::exit':
                 return this.renderSplash();
             default:
                 return this.renderTransactionConnection();
         }
+    }
+
+    renderDetails() {
+        this.props.completePlaidLink(this.state.data.metadata);
+
+        return (
+            <View style={styles.container}>
+                <Text>Institution: {this.state.data.metadata.institution.name}</Text>
+                <Text>
+                    Institution ID: {this.state.data.metadata.institution.institution_id}
+                </Text>
+            </View>
+        );
     }
 
     renderSplash() {

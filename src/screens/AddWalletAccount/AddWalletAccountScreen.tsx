@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./styles";
-import { Container } from "native-base";
+import axios from "axios";
+import { Container, View, Text } from "native-base";
 import PlaidAuth from "../PlaidAuth/PlaidAuth";
+import { TouchableOpacity, Image, Button } from "react-native";
 
 export interface Props {
     navigation: any;
@@ -87,6 +89,28 @@ class AddWalletAccountScreen extends React.Component<Props, State> {
         console.log('metadata: ' + JSON.stringify(event.metadata));
     }
 
+    handleOnSuccess = async () => {
+        this.setState({ loading: true });
+        const metadata = this.state.plaidData;
+        console.log('Calling LinkAccount API...');
+
+        const linkRequest = {
+            'public_token': metadata.public_token
+        }
+
+        // NOTE Post to HTTPS only in production
+        axios
+            .post('http://192.168.1.2:3000/api/v1/plaid/dc5bf63a-38d1-474e-b944-9a18e206a81e', linkRequest)
+            .then((response) => {
+                console.log(response);
+                this.props.navigation.pop();
+            })
+            .catch((error) => {
+                console.log(error);
+                this.handleOnExit();
+            });
+    }
+
     handleOnExit() {
         // handle the case when your user exits Link
         console.log('Failed to link');
@@ -98,6 +122,29 @@ class AddWalletAccountScreen extends React.Component<Props, State> {
     }
 
     render() {
+        if (this.state.plaidData) {
+            return (
+                <View style={styles.container}>
+                    <View style={styles.headerContainer}>
+                        <TouchableOpacity onPress={() => this.props.navigation.pop()}>
+                            <Image
+                                source={require("../../../assets/back-button.png")}
+                                resizeMode="contain"
+                                style={styles.backBtn}
+                            />
+                        </TouchableOpacity>
+                        <Text style={styles.headerTitle}>Add Account</Text>
+                    </View>
+                    <View style={styles.buttonWrapper}>
+                        <Button
+                            title="Connect Account"
+                            color="#0047CC"
+                            onPress={() => this.handleOnSuccess()}
+                        />
+                    </View>
+                </View>
+            )
+        }
         return (
             <Container>
                 <PlaidAuth

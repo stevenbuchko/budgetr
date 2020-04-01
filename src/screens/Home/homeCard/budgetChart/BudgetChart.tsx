@@ -1,5 +1,4 @@
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import NumberFormat from 'react-number-format';
 import * as React from 'react';
 import styles from './styles';
 import { View } from 'native-base';
