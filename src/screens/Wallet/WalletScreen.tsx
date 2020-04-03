@@ -11,6 +11,7 @@ export interface Props {
 
 export interface State {
     account_name: string;
+    mask: string;
 }
 
 const PLAID_PUBLIC_KEY = "54c75f7e9700d13893662d872beee7";
@@ -22,6 +23,7 @@ class WalletScreen extends React.Component<Props, State> {
         super(props);
         this.state = {
             account_name: '',
+            mask: ''
         };
     }
 
@@ -31,8 +33,9 @@ class WalletScreen extends React.Component<Props, State> {
                 .then(res => {
                     console.log('data: ' + res.data);
                     const account_name = res.data.name;
+                    const mask = res.data.mask;
 
-                    this.setState({ account_name });
+                    this.setState({ account_name, mask });
                 })
                 .catch(err => console.log(err));
         } catch (error) {
@@ -56,6 +59,7 @@ class WalletScreen extends React.Component<Props, State> {
                 />
                 <WalletCard
                     account_name={this.state.account_name}
+                    mask={this.state.mask}
                 />
             </View>
         )

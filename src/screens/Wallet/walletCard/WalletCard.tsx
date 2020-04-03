@@ -5,6 +5,7 @@ import styles from './styles';
 
 export interface Props {
     account_name: string;
+    mask: string;
 }
 
 export interface State {
@@ -13,7 +14,8 @@ export interface State {
 
 class WalletCard extends React.Component<Props, State> {
     render() {
-        const { account_name } = this.props;
+        const { account_name, mask } = this.props;
+        console.log({ mask });
 
         return (
             <View>
@@ -23,10 +25,9 @@ class WalletCard extends React.Component<Props, State> {
                     style={styles.cardBackground}
                 >
                     <View style={styles.accountWrapper}>
-                        <Text style={styles.cardNum}>••••  ••••  ••••  2930</Text>
+                        <Text style={styles.cardNum}>••••  ••••  ••••  {mask}</Text>
                         <View style={styles.bottomRow}>
                             <Text style={styles.name}>{account_name}</Text>
-                            <Text style={styles.expDate}>01/22</Text>
                         </View>
                     </View>
                 </ImageBackground >
