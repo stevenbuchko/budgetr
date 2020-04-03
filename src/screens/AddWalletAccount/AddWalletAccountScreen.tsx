@@ -95,8 +95,11 @@ class AddWalletAccountScreen extends React.Component<Props, State> {
         console.log('Calling LinkAccount API...');
 
         const linkRequest = {
-            'public_token': metadata.public_token
+            'public_token': metadata.public_token,
+            'account_id': metadata.account_id
         }
+
+        console.log(linkRequest);
 
         // NOTE Post to HTTPS only in production
         axios
