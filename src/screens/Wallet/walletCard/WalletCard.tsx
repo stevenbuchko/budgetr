@@ -4,7 +4,7 @@ import { View, ImageBackground } from 'react-native';
 import styles from './styles';
 
 export interface Props {
-
+    account_name: string;
 }
 
 export interface State {
@@ -12,8 +12,9 @@ export interface State {
 }
 
 class WalletCard extends React.Component<Props, State> {
-
     render() {
+        const { account_name } = this.props;
+
         return (
             <View>
                 <ImageBackground
@@ -24,7 +25,7 @@ class WalletCard extends React.Component<Props, State> {
                     <View style={styles.accountWrapper}>
                         <Text style={styles.cardNum}>••••  ••••  ••••  2930</Text>
                         <View style={styles.bottomRow}>
-                            <Text style={styles.name}>Steven Buchko</Text>
+                            <Text style={styles.name}>{account_name}</Text>
                             <Text style={styles.expDate}>01/22</Text>
                         </View>
                     </View>
