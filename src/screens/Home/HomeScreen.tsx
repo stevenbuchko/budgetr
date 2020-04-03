@@ -1,18 +1,19 @@
 import React from "react";
 import axios from "axios";
-import { Container } from "native-base";
+import { Container, Text, View } from "native-base";
 import styles from "./styles";
 import HomeHeader from "./homeHeader/HomeHeader";
 import HomeCard from "./homeCard/HomeCard";
+import TransactionCard from "./transactionCard/TransactionCard";
 
 export interface Props {
     navigation: any;
- }
+}
 
 export interface State {
     budget_amount: number;
     total_expenses: number;
- }
+}
 
 class HomeScreen extends React.Component<Props, State> {
     constructor(props) {
@@ -47,16 +48,22 @@ class HomeScreen extends React.Component<Props, State> {
             this.fetchData();
         });
     }
-    
+
     render() {
         return (
             <Container style={styles.container}>
                 <HomeHeader />
-                <HomeCard 
+                <HomeCard
                     budget_amount={this.state.budget_amount}
-                    total_expenses={this.state.total_expenses} 
+                    total_expenses={this.state.total_expenses}
                     navigation={this.props.navigation}
                 />
+                <View style={styles.titleWrapper}>
+                    <Text style={styles.titleText}>Transactions</Text>
+                </View>
+                <View style={styles.transactionCardsWrapper}>
+                    <TransactionCard />
+                </View>
             </Container>
         );
     }

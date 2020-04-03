@@ -30,9 +30,6 @@ const styles: any = StyleSheet.create({
         fontSize: 13,
         color: '#0047CC',
         fontFamily: 'avenir-next-medium'
-    },
-    budgetChartWrapper: {
-
     }
 });
 
