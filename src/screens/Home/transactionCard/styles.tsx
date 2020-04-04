@@ -27,7 +27,7 @@ const styles: any = StyleSheet.create({
         fontFamily: 'avenir-next-medium'
     },
     textWrapper: {
-        maxWidth: '50%'
+        maxWidth: '40%'
     },
     rightText: {
         alignSelf: 'center',

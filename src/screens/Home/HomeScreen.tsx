@@ -56,7 +56,6 @@ class HomeScreen extends React.Component<Props, State> {
             .then((res) => {
                 console.log(res.data.transactions);
                 const transactions = res.data.transactions.transactions;
-
                 this.setState({ transactions });
                 console.log('transactions state: ' + JSON.stringify(this.state.transactions));
             })

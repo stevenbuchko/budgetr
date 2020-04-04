@@ -1,6 +1,7 @@
 import { Text, View } from 'native-base';
 import { Image } from 'react-native';
 import * as React from 'react';
+import moment from 'moment';
 import styles from './styles';
 
 interface Transaction {
@@ -36,9 +37,9 @@ class TransactionCard extends React.Component<Props, State> {
                     >
                         {transaction.name}
                     </Text>
-                    <Text style={styles.bottomText}>{transaction.date}</Text>
+                    <Text style={styles.bottomText}>{moment(transaction.date).format("M/D/YY")}</Text>
                 </View>
-                <Text style={styles.rightText}>{transaction.amount}</Text>
+                <Text style={styles.rightText}>-${(transaction.amount).toFixed(2).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,')}</Text>
             </View>
         ));
         return (
