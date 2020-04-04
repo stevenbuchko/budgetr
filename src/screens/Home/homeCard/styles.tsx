@@ -5,7 +5,8 @@ const styles: any = StyleSheet.create({
         width: '90%',
         height: Dimensions.get('window').width * .9,
         marginTop: -200,
-        borderRadius: 12
+        borderRadius: 12,
+        alignSelf: 'center'
     },
     headerWrapper: {
         flexDirection: 'row',

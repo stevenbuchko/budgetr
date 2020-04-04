@@ -5,6 +5,14 @@ import styles from "./styles";
 import HomeHeader from "./homeHeader/HomeHeader";
 import HomeCard from "./homeCard/HomeCard";
 import TransactionCard from "./transactionCard/TransactionCard";
+import { ScrollView } from "react-native-gesture-handler";
+
+interface Transaction {
+    amount: number;
+    category_id: string;
+    name: string;
+    date: string;
+}
 
 export interface Props {
     navigation: any;
@@ -13,6 +21,7 @@ export interface Props {
 export interface State {
     budget_amount: number;
     total_expenses: number;
+    transactions: Transaction[];
 }
 
 class HomeScreen extends React.Component<Props, State> {
@@ -21,10 +30,11 @@ class HomeScreen extends React.Component<Props, State> {
         this.state = {
             budget_amount: 0,
             total_expenses: 0,
+            transactions: []
         };
     }
 
-    async fetchData() {
+    async fetchBudgetData() {
         try {
             await axios.get('http://192.168.1.2:3000/api/v1/users/dc5bf63a-38d1-474e-b944-9a18e206a81e')
                 .then(res => {
@@ -41,6 +51,23 @@ class HomeScreen extends React.Component<Props, State> {
         }
     }
 
+    async fetchTransactionData() {
+        await axios.get('http://192.168.1.2:3000/api/v1/transactions30/dc5bf63a-38d1-474e-b944-9a18e206a81e')
+            .then((res) => {
+                console.log(res.data.transactions);
+                const transactions = res.data.transactions.transactions;
+
+                this.setState({ transactions });
+                console.log('transactions state: ' + JSON.stringify(this.state.transactions));
+            })
+            .catch(err => console.log(err));
+    }
+
+    async fetchData() {
+        this.fetchBudgetData();
+        this.fetchTransactionData();
+    }
+
     componentDidMount() {
         this.fetchData();
 
@@ -52,18 +79,22 @@ class HomeScreen extends React.Component<Props, State> {
     render() {
         return (
             <Container style={styles.container}>
-                <HomeHeader />
-                <HomeCard
-                    budget_amount={this.state.budget_amount}
-                    total_expenses={this.state.total_expenses}
-                    navigation={this.props.navigation}
-                />
-                <View style={styles.titleWrapper}>
-                    <Text style={styles.titleText}>Transactions</Text>
-                </View>
-                <View style={styles.transactionCardsWrapper}>
-                    <TransactionCard />
-                </View>
+                <ScrollView>
+                    <HomeHeader />
+                    <HomeCard
+                        budget_amount={this.state.budget_amount}
+                        total_expenses={this.state.total_expenses}
+                        navigation={this.props.navigation}
+                    />
+                    <View style={styles.titleWrapper}>
+                        <Text style={styles.titleText}>Transactions</Text>
+                    </View>
+                    <View style={styles.transactionCardsWrapper}>
+                        <TransactionCard
+                            transactions={this.state.transactions}
+                        />
+                    </View>
+                </ScrollView>
             </Container>
         );
     }

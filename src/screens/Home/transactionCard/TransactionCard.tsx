@@ -3,8 +3,15 @@ import { Image } from 'react-native';
 import * as React from 'react';
 import styles from './styles';
 
-export interface Props {
+interface Transaction {
+    amount: number;
+    category_id: string;
+    name: string;
+    date: string;
+}
 
+export interface Props {
+    transactions: Transaction[];
 }
 
 export interface State {
@@ -13,19 +20,29 @@ export interface State {
 
 class TransactionCard extends React.Component<Props, State> {
     render() {
-        return (
-            <View style={styles.cardContainer}>
+        console.log("transactions prop: " + this.props.transactions);
+        const transactionCards = this.props.transactions.map((transaction, i) => (
+            <View key={i} style={styles.cardContainer}>
                 <Image
                     source={require("../../../../assets/gas-icon.png")}
                     resizeMode="contain"
                     style={styles.categoryIcon}
                 />
                 <View style={styles.textWrapper}>
-                    <Text style={styles.topText}>Shell</Text>
-                    <Text style={styles.bottomText}>9/18/20</Text>
+                    <Text
+                        style={styles.topText}
+                        ellipsizeMode='tail'
+                        numberOfLines={1}
+                    >
+                        {transaction.name}
+                    </Text>
+                    <Text style={styles.bottomText}>{transaction.date}</Text>
                 </View>
-                <Text style={styles.rightText}>-$30.23</Text>
+                <Text style={styles.rightText}>{transaction.amount}</Text>
             </View>
+        ));
+        return (
+            <View>{transactionCards}</View>
         );
     }
 }

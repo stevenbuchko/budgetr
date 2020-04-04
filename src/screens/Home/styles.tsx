@@ -8,7 +8,8 @@ const styles: any = StyleSheet.create({
     },
     titleWrapper: {
         width: '90%',
-        marginTop: 20
+        marginTop: 20,
+        alignSelf: 'center'
     },
     titleText: {
         color: '#042C5C',

@@ -7,7 +7,9 @@ const styles: any = StyleSheet.create({
         backgroundColor: '#fff',
         paddingTop: 5,
         paddingBottom: 5,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginBottom: 10,
+        alignSelf: 'center'
     },
     categoryIcon: {
         height: 40,
@@ -17,12 +19,15 @@ const styles: any = StyleSheet.create({
     topText: {
         color: '#042C5C',
         fontSize: 16,
-        fontFamily: 'avenir-next-medium'
+        fontFamily: 'avenir-next-medium',
     },
     bottomText: {
         color: '#77869E',
         fontSize: 13,
         fontFamily: 'avenir-next-medium'
+    },
+    textWrapper: {
+        maxWidth: '50%'
     },
     rightText: {
         alignSelf: 'center',
