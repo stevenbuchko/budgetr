@@ -4,21 +4,35 @@ import styles from './styles';
 import { View } from 'native-base';
 import { Text } from 'react-native';
 
-export interface Props {
-    budget_amount: number,
-    total_expenses: number,
+interface Transaction {
+    amount: number;
+    category_id: string;
+    name: string;
+    date: string;
 }
 
-export interface State { }
+export interface Props {
+    budget_amount: number,
+    transactions: Transaction[],
+}
+
+export interface State {
+    total_expenses: number
+}
 
 class BudgetChart extends React.Component<Props, State> {
     render() {
-        const { budget_amount, total_expenses } = this.props;
+        const { budget_amount, transactions } = this.props;
 
-        const budget_amount_formatted = (budget_amount).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        const total_expenses_formatted = (total_expenses).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        let total_expenses = 0
+
+        transactions.forEach(transaction => {
+            total_expenses += transaction.amount;
+        });
 
         const percentage = (total_expenses / budget_amount) * 100;
+        const budget_amount_formatted = (budget_amount).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        const total_expenses_formatted = (total_expenses).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
         return (
             <View style={styles.container}>

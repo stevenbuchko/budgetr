@@ -20,7 +20,6 @@ export interface Props {
 
 export interface State {
     budget_amount: number;
-    total_expenses: number;
     transactions: Transaction[];
 }
 
@@ -29,7 +28,6 @@ class HomeScreen extends React.Component<Props, State> {
         super(props);
         this.state = {
             budget_amount: 0,
-            total_expenses: 0,
             transactions: []
         };
     }
@@ -40,10 +38,8 @@ class HomeScreen extends React.Component<Props, State> {
                 .then(res => {
                     console.log(res.data);
                     const budget_amount = res.data.budget_amount;
-                    const total_expenses = res.data.total_expenses;
 
                     this.setState({ budget_amount });
-                    this.setState({ total_expenses });
                 })
                 .catch(err => console.log(err));
         } catch (error) {
@@ -82,7 +78,7 @@ class HomeScreen extends React.Component<Props, State> {
                     <HomeHeader />
                     <HomeCard
                         budget_amount={this.state.budget_amount}
-                        total_expenses={this.state.total_expenses}
+                        transactions={this.state.transactions}
                         navigation={this.props.navigation}
                     />
                     <View style={styles.titleWrapper}>
