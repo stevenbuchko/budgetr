@@ -32,7 +32,7 @@ class BudgetChart extends React.Component<Props, State> {
 
         const percentage = (total_expenses / budget_amount) * 100;
         const budget_amount_formatted = (budget_amount).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        const total_expenses_formatted = (total_expenses).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        const total_expenses_formatted = (total_expenses).toFixed(2).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
         return (
             <View style={styles.container}>

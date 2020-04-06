@@ -28,7 +28,7 @@ const styles: any = StyleSheet.create({
         fontFamily: 'avenir-next-medium'
     },
     textWrapper: {
-        maxWidth: '40%',
+        maxWidth: '45%',
         marginLeft: 15
     },
     rightText: {
