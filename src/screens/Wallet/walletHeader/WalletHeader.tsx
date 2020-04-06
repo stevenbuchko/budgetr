@@ -16,7 +16,10 @@ class WalletHeader extends React.Component<Props, State> {
                 <Text style={styles.headerTitle}>Your Wallet</Text>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('AddWalletAccount')}>
                     <Image
-                        source={require("../../../../assets/add-card-icon.png")}
+                        source={{
+                            uri:
+                                'https://budgetrapp.s3.us-east-2.amazonaws.com/images/add-card-icon.png',
+                        }}
                         resizeMode="contain"
                         style={styles.addWalletBtn}
                     />

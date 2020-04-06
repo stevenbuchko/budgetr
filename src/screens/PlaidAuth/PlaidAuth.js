@@ -56,7 +56,10 @@ export default class PlaidAuth extends Component {
                 <View style={styles.headerContainer}>
                     <TouchableOpacity onPress={() => this.props.navigation.pop()}>
                         <Image
-                            source={require("../../../assets/back-button.png")}
+                            source={{
+                                uri:
+                                    'https://budgetrapp.s3.us-east-2.amazonaws.com/images/back-button.png',
+                            }}
                             resizeMode="contain"
                             style={styles.backBtn}
                         />

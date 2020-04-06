@@ -6,7 +6,7 @@ import styles from './styles';
 
 interface Transaction {
     amount: number;
-    category_id: string;
+    category: any;
     name: string;
     date: string;
 }
@@ -20,12 +20,16 @@ export interface State {
 }
 
 class TransactionCard extends React.Component<Props, State> {
+
     render() {
         console.log("transactions prop: " + this.props.transactions);
         const transactionCards = this.props.transactions.map((transaction, i) => (
             <View key={i} style={styles.cardContainer}>
                 <Image
-                    source={require("../../../../assets/gas-icon.png")}
+                    source={{
+                        uri:
+                            'https://budgetrapp.s3.us-east-2.amazonaws.com/images/' + transaction.category[0] + '.png',
+                    }}
                     resizeMode="contain"
                     style={styles.categoryIcon}
                 />

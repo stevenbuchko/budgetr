@@ -14,7 +14,8 @@ const styles: any = StyleSheet.create({
     headerTitle: {
         color: '#042C5C',
         fontSize: 20,
-        fontFamily: 'avenir-next-medium'
+        fontFamily: 'avenir-next-medium',
+        marginLeft: 10
     },
     headerContainer: {
         paddingTop: 70,
@@ -24,7 +25,8 @@ const styles: any = StyleSheet.create({
         flexDirection: 'row'
     },
     backBtn: {
-        height: 15
+        height: 20,
+        width: 20
     },
     buttonWrapper: {
         marginTop: 40

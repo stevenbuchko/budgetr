@@ -5,14 +5,14 @@ import * as React from 'react';
 import { Button, Image, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
-export interface Props { 
+export interface Props {
     navigation: any;
     route: any;
 }
 
 export interface State {
     input_amount: string;
- }
+}
 
 
 
@@ -40,7 +40,7 @@ class EditBudgetScreen extends React.Component<Props, State> {
         const params = {
             'budget_amount': new_budget,
         };
-        
+
         try {
             axios.put('http://192.168.1.2:3000/api/v1/users/dc5bf63a-38d1-474e-b944-9a18e206a81e', params,
                 {
@@ -49,11 +49,11 @@ class EditBudgetScreen extends React.Component<Props, State> {
                     }
                 }
             )
-            .then(res => {
-                console.log(res.data);
-                this.props.navigation.pop();
-            })
-            .catch(err => console.log(err));
+                .then(res => {
+                    console.log(res.data);
+                    this.props.navigation.pop();
+                })
+                .catch(err => console.log(err));
         } catch (error) {
             console.log('Fetch Error:', error)
         }
@@ -64,9 +64,12 @@ class EditBudgetScreen extends React.Component<Props, State> {
             <Container style={styles.container}>
                 <View style={styles.headerContainer}>
                     <TouchableOpacity onPress={() => this.props.navigation.pop()}>
-                        <Image 
-                            source={require("../../../assets/back-button.png")}
-                            resizeMode="contain" 
+                        <Image
+                            source={{
+                                uri:
+                                    'https://budgetrapp.s3.us-east-2.amazonaws.com/images/back-button.png',
+                            }}
+                            resizeMode="contain"
                             style={styles.backBtn}
                         />
                     </TouchableOpacity>
@@ -90,10 +93,10 @@ class EditBudgetScreen extends React.Component<Props, State> {
                             onChangeText={(i) => this.setState({ input_amount: i })}
                             ref={(ref) => this.budgetField = ref}
                             style={styles.input}
-                        /> 
+                        />
                     </Form>
                     <View style={styles.buttonWrapper}>
-                        <Button 
+                        <Button
                             title="Update Budget"
                             color="#0047CC"
                             onPress={() => this.updateBudget()}

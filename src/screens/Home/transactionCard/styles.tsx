@@ -13,8 +13,9 @@ const styles: any = StyleSheet.create({
     },
     categoryIcon: {
         height: 40,
+        width: 40,
         alignSelf: 'center',
-        marginLeft: -10,
+        marginLeft: 10
     },
     topText: {
         color: '#042C5C',
@@ -27,7 +28,8 @@ const styles: any = StyleSheet.create({
         fontFamily: 'avenir-next-medium'
     },
     textWrapper: {
-        maxWidth: '40%'
+        maxWidth: '40%',
+        marginLeft: 15
     },
     rightText: {
         alignSelf: 'center',

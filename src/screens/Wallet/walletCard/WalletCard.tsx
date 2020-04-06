@@ -20,7 +20,10 @@ class WalletCard extends React.Component<Props, State> {
         return (
             <View>
                 <ImageBackground
-                    source={require("../../../../assets/card-background.png")}
+                    source={{
+                        uri:
+                            'https://budgetrapp.s3.us-east-2.amazonaws.com/images/card-background.png',
+                    }}
                     resizeMode="contain"
                     style={styles.cardBackground}
                 >

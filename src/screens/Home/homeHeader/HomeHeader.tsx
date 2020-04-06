@@ -11,7 +11,10 @@ class HomeHeader extends React.Component<Props, State> {
     render() {
         return (
             <ImageBackground
-                source={require("../../../../assets/header-background.png")}
+                source={{
+                    uri:
+                        'https://budgetrapp.s3.us-east-2.amazonaws.com/images/header-background.png',
+                }}
                 resizeMode="contain"
                 style={styles.backgroundImage}
             >

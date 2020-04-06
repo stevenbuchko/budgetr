@@ -15,7 +15,8 @@ const styles: any = StyleSheet.create({
         fontFamily: 'avenir-next-medium'
     },
     addWalletBtn: {
-        height: 25
+        height: 40,
+        width: 40
     }
 });
 
