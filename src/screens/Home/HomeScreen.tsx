@@ -21,6 +21,8 @@ export interface Props {
 export interface State {
     budget_amount: number;
     transactions: Transaction[];
+    total_expenses_amount: number;
+    total_expenses_formatted: string;
 }
 
 class HomeScreen extends React.Component<Props, State> {
@@ -28,7 +30,9 @@ class HomeScreen extends React.Component<Props, State> {
         super(props);
         this.state = {
             budget_amount: 0,
-            transactions: []
+            transactions: [],
+            total_expenses_amount: 0,
+            total_expenses_formatted: ''
         };
     }
 
@@ -58,9 +62,20 @@ class HomeScreen extends React.Component<Props, State> {
             .catch(err => console.log(err));
     }
 
+    async fetchTotalExpenses() {
+        await axios.post('http://192.168.1.2:3000/api/v1/transactions/dc5bf63a-38d1-474e-b944-9a18e206a81e')
+            .then((res) => {
+                const total_expenses_amount = res.data.total_expenses_amount;
+                const total_expenses_formatted = res.data.total_expenses_formatted;
+                this.setState({ total_expenses_amount, total_expenses_formatted });
+            })
+            .catch(err => console.log(err));
+    }
+
     async fetchData() {
         this.fetchBudgetData();
         this.fetchTransactionData();
+        this.fetchTotalExpenses();
     }
 
     componentDidMount() {
@@ -78,7 +93,8 @@ class HomeScreen extends React.Component<Props, State> {
                     <HomeHeader />
                     <HomeCard
                         budget_amount={this.state.budget_amount}
-                        transactions={this.state.transactions}
+                        total_expenses_amount={this.state.total_expenses_amount}
+                        total_expenses_formatted={this.state.total_expenses_formatted}
                         navigation={this.props.navigation}
                     />
                     <View style={styles.titleWrapper}>

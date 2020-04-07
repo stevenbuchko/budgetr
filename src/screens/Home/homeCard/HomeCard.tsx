@@ -5,16 +5,10 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import BudgetChart from './budgetChart/BudgetChart'
 import styles from './styles';
 
-interface Transaction {
-    amount: number;
-    category_id: string;
-    name: string;
-    date: string;
-}
-
 export interface Props {
     budget_amount: number;
-    transactions: Transaction[];
+    total_expenses_amount: number;
+    total_expenses_formatted: string;
     navigation: any;
 }
 
@@ -46,7 +40,8 @@ class HomeCard extends React.Component<Props, State> {
                 </View>
                 <BudgetChart
                     budget_amount={this.props.budget_amount}
-                    transactions={this.props.transactions}
+                    total_expenses_amount={this.props.total_expenses_amount}
+                    total_expenses_formatted={this.props.total_expenses_formatted}
                 />
             </Card>
         );
