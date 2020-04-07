@@ -5,7 +5,7 @@ import { Button, Image, TouchableOpacity } from 'react-native';
 import styles from "./styles";
 
 const PLAID_PUBLIC_KEY = '54c75f7e9700d13893662d872beee7';
-const PLAID_ENV = 'sandbox';
+const PLAID_ENV = 'development';
 const PLAID_PRODUCT = 'transactions';
 const CLIENT_NAME = 'Budgetr';
 
