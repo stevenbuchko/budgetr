@@ -5,6 +5,7 @@ import styles from "./styles";
 import HomeHeader from "./homeHeader/HomeHeader";
 import HomeCard from "./homeCard/HomeCard";
 import TransactionCard from "./transactionCard/TransactionCard";
+import TransactionPicker from "./transactionPicker/TransactionPicker"
 import { ScrollView } from "react-native-gesture-handler";
 
 interface Transaction {
@@ -23,6 +24,7 @@ export interface State {
     transactions: Transaction[];
     total_expenses_amount: number;
     total_expenses_formatted: string;
+    transaction_timeframe: string;
 }
 
 class HomeScreen extends React.Component<Props, State> {
@@ -32,7 +34,8 @@ class HomeScreen extends React.Component<Props, State> {
             budget_amount: 0,
             transactions: [],
             total_expenses_amount: 0,
-            total_expenses_formatted: ''
+            total_expenses_formatted: '',
+            transaction_timeframe: 'WEEK'
         };
     }
 
@@ -86,6 +89,10 @@ class HomeScreen extends React.Component<Props, State> {
         });
     }
 
+    changeTransactionTimeframe = (timeframe: string) => {
+        this.setState({ transaction_timeframe: timeframe });
+    }
+
     render() {
         return (
             <Container style={styles.container}>
@@ -100,6 +107,10 @@ class HomeScreen extends React.Component<Props, State> {
                     <View style={styles.titleWrapper}>
                         <Text style={styles.titleText}>Transactions</Text>
                     </View>
+                    <TransactionPicker
+                        transaction_timeframe={this.state.transaction_timeframe}
+                        changeTransactionTimeframe={this.changeTransactionTimeframe}
+                    />
                     <View style={styles.transactionCardsWrapper}>
                         <TransactionCard
                             transactions={this.state.transactions}
