@@ -21,7 +21,10 @@ export interface Props {
 
 export interface State {
     budget_amount: number;
-    transactions: Transaction[];
+    transactions_7_days: Transaction[];
+    transactions_30_days: Transaction[];
+    transactions_3_months: Transaction[];
+    transactions_1_day: Transaction[];
     total_expenses_amount: number;
     total_expenses_formatted: string;
     transaction_timeframe: string;
@@ -32,10 +35,13 @@ class HomeScreen extends React.Component<Props, State> {
         super(props);
         this.state = {
             budget_amount: 0,
-            transactions: [],
+            transactions_7_days: [],
+            transactions_30_days: [],
+            transactions_3_months: [],
+            transactions_1_day: [],
             total_expenses_amount: 0,
             total_expenses_formatted: '',
-            transaction_timeframe: 'WEEK'
+            transaction_timeframe: '7 DAYS'
         };
     }
 
@@ -55,12 +61,39 @@ class HomeScreen extends React.Component<Props, State> {
     }
 
     async fetchTransactionData() {
-        await axios.get('http://192.168.1.2:3000/api/v1/transactions30/dc5bf63a-38d1-474e-b944-9a18e206a81e')
+        await axios.get('http://192.168.1.2:3000/api/v1/transactions7days/dc5bf63a-38d1-474e-b944-9a18e206a81e')
             .then((res) => {
                 console.log(res.data.transactions);
-                const transactions = res.data.transactions.transactions;
-                this.setState({ transactions });
-                console.log('transactions state: ' + JSON.stringify(this.state.transactions));
+                const transactions_7_days = res.data.transactions.transactions;
+                this.setState({ transactions_7_days });
+                console.log('transactions state: ' + JSON.stringify(this.state.transactions_7_days));
+            })
+            .catch(err => console.log(err));
+
+        await axios.get('http://192.168.1.2:3000/api/v1/transactions30days/dc5bf63a-38d1-474e-b944-9a18e206a81e')
+            .then((res) => {
+                console.log(res.data.transactions);
+                const transactions_30_days = res.data.transactions.transactions;
+                this.setState({ transactions_30_days });
+                console.log('transactions state: ' + JSON.stringify(this.state.transactions_30_days));
+            })
+            .catch(err => console.log(err));
+
+        await axios.get('http://192.168.1.2:3000/api/v1/transactions3months/dc5bf63a-38d1-474e-b944-9a18e206a81e')
+            .then((res) => {
+                console.log(res.data.transactions);
+                const transactions_3_months = res.data.transactions.transactions;
+                this.setState({ transactions_3_months });
+                console.log('transactions state: ' + JSON.stringify(this.state.transactions_3_months));
+            })
+            .catch(err => console.log(err));
+
+        await axios.get('http://192.168.1.2:3000/api/v1/transactions1day/dc5bf63a-38d1-474e-b944-9a18e206a81e')
+            .then((res) => {
+                console.log(res.data.transactions);
+                const transactions_1_day = res.data.transactions.transactions;
+                this.setState({ transactions_1_day });
+                console.log('transactions state: ' + JSON.stringify(this.state.transactions_1_day));
             })
             .catch(err => console.log(err));
     }
@@ -113,7 +146,11 @@ class HomeScreen extends React.Component<Props, State> {
                     />
                     <View style={styles.transactionCardsWrapper}>
                         <TransactionCard
-                            transactions={this.state.transactions}
+                            transactions_1_day={this.state.transactions_1_day}
+                            transactions_7_days={this.state.transactions_7_days}
+                            transactions_30_days={this.state.transactions_30_days}
+                            transactions_3_months={this.state.transactions_3_months}
+                            transaction_timeframe={this.state.transaction_timeframe}
                         />
                     </View>
                 </ScrollView>

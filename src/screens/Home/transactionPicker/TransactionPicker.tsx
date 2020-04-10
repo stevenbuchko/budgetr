@@ -15,9 +15,9 @@ class TransactionPicker extends React.Component<Props, State> {
     render() {
         return (
             <View style={styles.pickerWrapper}>
-                <TouchableOpacity onPress={() => this.props.changeTransactionTimeframe('DAY')}>
+                <TouchableOpacity onPress={() => this.props.changeTransactionTimeframe('1 DAY')}>
                     <View style={{
-                        backgroundColor: this.props.transaction_timeframe === 'DAY'
+                        backgroundColor: this.props.transaction_timeframe === '1 DAY'
                             ? '#DFE7F5'
                             : 'transparent',
                         paddingTop: 5,
@@ -30,17 +30,17 @@ class TransactionPicker extends React.Component<Props, State> {
                             fontFamily: 'avenir-next-medium',
                             fontSize: 13,
                             color:
-                                this.props.transaction_timeframe === 'DAY'
+                                this.props.transaction_timeframe === '1 DAY'
                                     ? '#0047CC'
                                     : '#77869E',
                         }}>
-                            Day
+                            1 Day
                         </Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.changeTransactionTimeframe('WEEK')}>
+                <TouchableOpacity onPress={() => this.props.changeTransactionTimeframe('7 DAYS')}>
                     <View style={{
-                        backgroundColor: this.props.transaction_timeframe === 'WEEK'
+                        backgroundColor: this.props.transaction_timeframe === '7 DAYS'
                             ? '#DFE7F5'
                             : 'transparent',
                         paddingTop: 5,
@@ -53,17 +53,17 @@ class TransactionPicker extends React.Component<Props, State> {
                             fontFamily: 'avenir-next-medium',
                             fontSize: 13,
                             color:
-                                this.props.transaction_timeframe === 'WEEK'
+                                this.props.transaction_timeframe === '7 DAYS'
                                     ? '#0047CC'
                                     : '#77869E',
                         }}>
-                            Week
+                            7 Days
                         </Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.changeTransactionTimeframe('MONTH')}>
+                <TouchableOpacity onPress={() => this.props.changeTransactionTimeframe('30 DAYS')}>
                     <View style={{
-                        backgroundColor: this.props.transaction_timeframe === 'MONTH'
+                        backgroundColor: this.props.transaction_timeframe === '30 DAYS'
                             ? '#DFE7F5'
                             : 'transparent',
                         paddingTop: 5,
@@ -76,17 +76,17 @@ class TransactionPicker extends React.Component<Props, State> {
                             fontFamily: 'avenir-next-medium',
                             fontSize: 13,
                             color:
-                                this.props.transaction_timeframe === 'MONTH'
+                                this.props.transaction_timeframe === '30 DAYS'
                                     ? '#0047CC'
                                     : '#77869E',
                         }}>
-                            Month
+                            30 Days
                         </Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.changeTransactionTimeframe('YEAR')}>
+                <TouchableOpacity onPress={() => this.props.changeTransactionTimeframe('3 MONTHS')}>
                     <View style={{
-                        backgroundColor: this.props.transaction_timeframe === 'YEAR'
+                        backgroundColor: this.props.transaction_timeframe === '3 MONTHS'
                             ? '#DFE7F5'
                             : 'transparent',
                         paddingTop: 5,
@@ -99,11 +99,11 @@ class TransactionPicker extends React.Component<Props, State> {
                             fontFamily: 'avenir-next-medium',
                             fontSize: 13,
                             color:
-                                this.props.transaction_timeframe === 'YEAR'
+                                this.props.transaction_timeframe === '3 MONTHS'
                                     ? '#0047CC'
                                     : '#77869E',
                         }}>
-                            Year
+                            3 Months
                         </Text>
                     </View>
                 </TouchableOpacity>

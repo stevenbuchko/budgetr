@@ -3,9 +3,10 @@ import { StyleSheet } from 'react-native';
 const styles: any = StyleSheet.create({
     pickerWrapper: {
         flexDirection: 'row',
-        width: '80%',
+        width: '90%',
         alignSelf: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-around',
+        alignItems: 'center'
     },
 });
 
