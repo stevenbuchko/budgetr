@@ -2,8 +2,8 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const styles: any = StyleSheet.create({
     cardBackground: {
-        width: Dimensions.get('window').width * 1.1,
-        height: Dimensions.get('window').width * 1.1 * .61,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').width * .61,
         alignSelf: 'center'
     },
     accountWrapper: {
@@ -32,6 +32,11 @@ const styles: any = StyleSheet.create({
         color: '#fff',
         fontSize: 16,
         fontFamily: 'courier-prime-regular',
+    },
+    carouselWrapper: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
     }
 });
 
