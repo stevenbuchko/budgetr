@@ -47,10 +47,6 @@ class WalletScreen extends React.Component<Props, State> {
 
     componentDidMount() {
         this.fetchData();
-
-        this.props.navigation.addListener('focus', () => {
-            this.fetchData();
-        });
     }
 
     render() {
