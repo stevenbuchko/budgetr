@@ -6,6 +6,7 @@ import styles from './styles';
 
 interface Transaction {
     amount: number;
+    amount_formatted: string;
     category: any;
     name: string;
     date: string;
@@ -48,7 +49,7 @@ class TransactionCard extends React.Component<Props, State> {
                 <Image
                     source={{
                         uri:
-                            'https://budgetrapp.s3.us-east-2.amazonaws.com/images/' + transaction.category[0] + '.png',
+                            'https://budgetrapp.s3.us-east-2.amazonaws.com/images/' + transaction.category + '.png',
                     }}
                     resizeMode="contain"
                     style={styles.categoryIcon}
@@ -61,9 +62,9 @@ class TransactionCard extends React.Component<Props, State> {
                     >
                         {transaction.name}
                     </Text>
-                    <Text style={styles.bottomText}>{moment(transaction.date).format("M/D/YY")}</Text>
+                    <Text style={styles.bottomText}>{transaction.date}</Text>
                 </View>
-                <Text style={styles.rightText}>-${(transaction.amount).toFixed(2).toString().replace(/\d(?=(\d{3})+\.)/g, '$&,')}</Text>
+                <Text style={styles.rightText}>{transaction.amount_formatted}</Text>
             </View>
         ));
         return (

@@ -61,39 +61,31 @@ class HomeScreen extends React.Component<Props, State> {
     }
 
     async fetchTransactionData() {
+        await axios.get('http://192.168.1.2:3000/api/v1/transactions1day/dc5bf63a-38d1-474e-b944-9a18e206a81e')
+            .then((res) => {
+                const transactions_1_day = res.data.transactions;
+                this.setState({ transactions_1_day });
+            })
+            .catch(err => console.log(err));
+
         await axios.get('http://192.168.1.2:3000/api/v1/transactions7days/dc5bf63a-38d1-474e-b944-9a18e206a81e')
             .then((res) => {
-                console.log(res.data.transactions);
-                const transactions_7_days = res.data.transactions.transactions;
+                const transactions_7_days = res.data.transactions;
                 this.setState({ transactions_7_days });
-                console.log('transactions state: ' + JSON.stringify(this.state.transactions_7_days));
             })
             .catch(err => console.log(err));
 
         await axios.get('http://192.168.1.2:3000/api/v1/transactions30days/dc5bf63a-38d1-474e-b944-9a18e206a81e')
             .then((res) => {
-                console.log(res.data.transactions);
-                const transactions_30_days = res.data.transactions.transactions;
+                const transactions_30_days = res.data.transactions;
                 this.setState({ transactions_30_days });
-                console.log('transactions state: ' + JSON.stringify(this.state.transactions_30_days));
             })
             .catch(err => console.log(err));
 
         await axios.get('http://192.168.1.2:3000/api/v1/transactions3months/dc5bf63a-38d1-474e-b944-9a18e206a81e')
             .then((res) => {
-                console.log(res.data.transactions);
-                const transactions_3_months = res.data.transactions.transactions;
+                const transactions_3_months = res.data.transactions;
                 this.setState({ transactions_3_months });
-                console.log('transactions state: ' + JSON.stringify(this.state.transactions_3_months));
-            })
-            .catch(err => console.log(err));
-
-        await axios.get('http://192.168.1.2:3000/api/v1/transactions1day/dc5bf63a-38d1-474e-b944-9a18e206a81e')
-            .then((res) => {
-                console.log(res.data.transactions);
-                const transactions_1_day = res.data.transactions.transactions;
-                this.setState({ transactions_1_day });
-                console.log('transactions state: ' + JSON.stringify(this.state.transactions_1_day));
             })
             .catch(err => console.log(err));
     }
