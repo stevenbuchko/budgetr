@@ -42,6 +42,14 @@ class TransactionCard extends React.Component<Props, State> {
         }
     }
 
+    positiveOrNegativeColor(amount) {
+        if (amount > 0) {
+            return '#EE5A55'
+        } else {
+            return '#2AD95A'
+        }
+    }
+
     render() {
         console.log("transactions prop: " + this.getTimeframe());
         const transactionCards = this.getTimeframe().map((transaction, i) => (
@@ -64,8 +72,18 @@ class TransactionCard extends React.Component<Props, State> {
                     </Text>
                     <Text style={styles.bottomText}>{transaction.date}</Text>
                 </View>
-                <Text style={styles.rightText}>{transaction.amount_formatted}</Text>
-            </View>
+                <Text style={{
+                    alignSelf: 'center',
+                    color: this.positiveOrNegativeColor(transaction.amount),
+                    fontSize: 16,
+                    fontFamily: 'avenir-next-medium',
+                    textAlign: 'right',
+                    flex: 1,
+                    marginRight: 20
+                }}>
+                    {transaction.amount_formatted}
+                </Text>
+            </View >
         ));
         return (
             <View>{transactionCards}</View>
