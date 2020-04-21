@@ -1,6 +1,8 @@
 import React from "react";
-import { Text, View } from "native-base";
+import { Text, View, Container } from "native-base";
 import styles from "./styles";
+import { ScrollView } from "react-native";
+import ExpensesHeader from "./expensesHeader/ExpensesHeader";
 
 export interface Props {
     navigation: any;
@@ -20,9 +22,11 @@ class ExpensesScreen extends React.Component<Props, State> {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>This is the expenses screen</Text>
-            </View>
+            <Container style={styles.container}>
+                <ScrollView>
+                    <ExpensesHeader />
+                </ScrollView>
+            </Container>
         );
     }
 }
