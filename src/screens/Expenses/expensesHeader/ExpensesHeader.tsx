@@ -4,7 +4,11 @@ import { View, ImageBackground, Image } from 'react-native';
 import { format } from 'date-fns'
 import styles from './styles';
 
-export interface Props { }
+export interface Props {
+    total_expenses_formatted: string;
+    total_revenue_formatted: string;
+    total_net_formatted: string;
+}
 
 export interface State { }
 
@@ -12,6 +16,8 @@ class ExpensesHeader extends React.Component<Props, State> {
     month = format(new Date(), 'MMMM');
 
     render() {
+        const { total_expenses_formatted, total_revenue_formatted, total_net_formatted } = this.props;
+
         return (
             <ImageBackground
                 source={{
@@ -26,7 +32,7 @@ class ExpensesHeader extends React.Component<Props, State> {
                     <View style={styles.headerInfo}>
                         <View style={styles.headerInfoLeft}>
                             <Text style={styles.topText}>{this.month} Net</Text>
-                            <Text style={styles.bottomText}>$4,500.00</Text>
+                            <Text style={styles.bottomText}>{total_net_formatted}</Text>
                         </View>
                         <View style={styles.headerInfoLeft}>
                             <View style={styles.positiveWrapper}>
@@ -38,7 +44,7 @@ class ExpensesHeader extends React.Component<Props, State> {
                                     resizeMode="contain"
                                     style={styles.arrowImage}>
                                 </Image>
-                                <Text style={styles.positiveText}>$4,500.00</Text>
+                                <Text style={styles.positiveText}>{total_revenue_formatted}</Text>
                             </View>
                             <View style={styles.negativeWrapper}>
                                 <Image
@@ -49,7 +55,7 @@ class ExpensesHeader extends React.Component<Props, State> {
                                     resizeMode="contain"
                                     style={styles.arrowImage}>
                                 </Image>
-                                <Text style={styles.negativeText}>$4,500.00</Text>
+                                <Text style={styles.negativeText}>{total_expenses_formatted}</Text>
                             </View>
                         </View>
                     </View>
