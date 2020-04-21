@@ -9,16 +9,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/Home/HomeScreen';
 import EditBudgetScreen from './src/screens/EditBudget/EditBudgetScreen';
 import WalletScreen from './src/screens/Wallet/WalletScreen';
+import ExpensesScreen from './src/screens/Expenses/ExpensesScreen';
 import { AppLoading } from 'expo';
 import AddWalletAccountScreen from './src/screens/AddWalletAccount/AddWalletAccountScreen';
-
-function ExpensesScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>This is the expenses screen</Text>
-    </View>
-  )
-}
 
 function ProfileScreen() {
   return (

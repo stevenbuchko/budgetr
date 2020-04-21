@@ -28,7 +28,6 @@ class WalletCard extends React.Component<Props, State> {
     getCarouselItems() {
         let carouselItems = [];
         var i;
-        console.log("length: " + this.props.accounts);
         for (i = 0; i <= this.props.accounts.length - 1; i++) {
             console.log("mask: " + this.props.accounts[i].mask);
             carouselItems.push({
@@ -36,7 +35,6 @@ class WalletCard extends React.Component<Props, State> {
                 name: this.props.accounts[i].name
             });
         };
-        console.log("lkjsdlk: " + carouselItems);
         return carouselItems;
     }
 
