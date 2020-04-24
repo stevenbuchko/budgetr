@@ -4,6 +4,7 @@ import styles from "./styles";
 import { ScrollView } from "react-native";
 import axios from "axios";
 import ExpensesHeader from "./expensesHeader/ExpensesHeader";
+import ExpensesChart from "./expensesChart/ExpensesChart";
 
 export interface Props {
     navigation: any;
@@ -53,6 +54,7 @@ class ExpensesScreen extends React.Component<Props, State> {
                         total_revenue_formatted={this.state.total_revenue_formatted}
                         total_net_formatted={this.state.total_net_formatted}
                     />
+                    <ExpensesChart />
                 </ScrollView>
             </Container>
         );
