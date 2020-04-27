@@ -15,6 +15,7 @@ export interface State {
     total_revenue_formatted: string;
     total_net_formatted: string;
     expense_chart_data: any;
+    income_chart_data: any;
 }
 
 class ExpensesScreen extends React.Component<Props, State> {
@@ -24,7 +25,8 @@ class ExpensesScreen extends React.Component<Props, State> {
             total_expenses_formatted: '',
             total_revenue_formatted: '',
             total_net_formatted: '',
-            expense_chart_data: []
+            expense_chart_data: [],
+            income_chart_data: []
         };
     }
 
@@ -41,7 +43,8 @@ class ExpensesScreen extends React.Component<Props, State> {
         await axios.get('http://192.168.1.2:3000/api/v1/transactions/expenseData/dc5bf63a-38d1-474e-b944-9a18e206a81e')
             .then((res) => {
                 const expense_chart_data = res.data.expenseData;
-                this.setState({ expense_chart_data });
+                const income_chart_data = res.data.incomeData;
+                this.setState({ expense_chart_data, income_chart_data });
             })
             .catch(err => console.log(err));
     }
@@ -65,6 +68,7 @@ class ExpensesScreen extends React.Component<Props, State> {
                     />
                     <ExpensesChart
                         expense_chart_data={this.state.expense_chart_data}
+                        income_chart_data={this.state.income_chart_data}
                     />
                 </ScrollView>
             </Container>
