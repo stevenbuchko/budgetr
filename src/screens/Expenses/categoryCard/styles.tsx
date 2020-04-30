@@ -17,9 +17,9 @@ const styles: any = StyleSheet.create({
         alignSelf: 'center',
         marginLeft: 10
     },
-    topText: {
+    categoryText: {
         color: '#042C5C',
-        fontSize: 16,
+        fontSize: 18,
         fontFamily: 'avenir-next-medium',
     },
     bottomText: {
@@ -29,7 +29,8 @@ const styles: any = StyleSheet.create({
     },
     textWrapper: {
         maxWidth: '45%',
-        marginLeft: 15
+        marginLeft: 15,
+        justifyContent: 'center'
     },
     rightText: {
         alignSelf: 'center',

@@ -42,7 +42,8 @@ class ExpensesChart extends React.Component<Props, State> {
                                     tickLabels: {
                                         fontSize: 13,
                                         fontFamily: "avenir-next-medium",
-                                        padding: 5
+                                        padding: 5,
+                                        fill: "#1D3041"
                                     }
                                 }}
                                 offsetX={50}
@@ -51,7 +52,12 @@ class ExpensesChart extends React.Component<Props, State> {
                             />
                             <VictoryAxis
                                 style={{
-                                    axis: { stroke: "transparent" }
+                                    axis: { stroke: "transparent" },
+                                    tickLabels: {
+                                        fontSize: 13,
+                                        fontFamily: "avenir-next-medium",
+                                        fill: "#77869E",
+                                    }
                                 }}
                             />
                             <VictoryGroup

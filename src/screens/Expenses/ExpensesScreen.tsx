@@ -1,10 +1,11 @@
 import React from "react";
-import { Container } from "native-base";
+import { Container, Text, View } from "native-base";
 import styles from "./styles";
 import { ScrollView } from "react-native";
 import axios from "axios";
 import ExpensesHeader from "./expensesHeader/ExpensesHeader";
 import ExpensesChart from "./expensesChart/ExpensesChart";
+import CategoryCard from "./categoryCard/CategoryCard";
 
 export interface Props {
     navigation: any;
@@ -70,6 +71,10 @@ class ExpensesScreen extends React.Component<Props, State> {
                         expense_chart_data={this.state.expense_chart_data}
                         income_chart_data={this.state.income_chart_data}
                     />
+                    <View style={styles.titleWrapper}>
+                        <Text style={styles.titleText}>Spending Breakdown</Text>
+                    </View>
+                    <CategoryCard />
                 </ScrollView>
             </Container>
         );
